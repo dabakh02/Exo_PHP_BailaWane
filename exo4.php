@@ -1,17 +1,33 @@
+
 <?php
-/*ecrire un script qui genere 2 points A(x,y) et B(x,y)
-le script 
-_affiche les 2 points puis 
-_determine et affiche la distance qui separe ses 2 points
+/*ecrire un script qui genere une annee et un mois puis determine et affiche le nombre de jours de ce mois dans cette annee*/
 
-*/
-define("Min", 0);define("Max", 20);
-$pointAx=rand(Min,Max);$pointAy=rand(Min,Max);
-$pointBx=rand(Min,Max);$pointBy=rand(Min,Max);
-echo("Les deux points sont :<br> ");
-echo("le point A de coordonnées : (".$pointAx.";".$pointAy.")"."<br>");
-echo("le point B de coordonnées : (".$pointBx.";".$pointBy.")"."<br>");
+define("MOISMIN", 1);
+define("MOISMAX", 12);
+define("ANNEEMIN", 1900);
+define("ANNEEMAX", 2099);
+$mois=rand(MOISMIN,MOISMAX);
+$annee=rand(ANNEEMIN,ANNEEMAX);
 
-$distance=(sqrt(pow($pointAx-$pointBx, 2)+pow($pointAy-$pointBy, 2)));
-echo("La distance entre les deux points est : ".$distance);
+if ($mois==4 OR $mois==6 OR $mois==9 OR $mois==11) 
+{
+	$nbrjour=30;
+}elseif ($mois==2)
+{
+	if ($annee%100==0 AND $annee%400==0)
+	{
+		$nbrjour= 29;
+	}else
+	{
+		$nbrjour=28;
+	}
+}else
+{
+	$nbrjour=31;
+}
+echo("la date générée est : ".$mois."/".$annee);
+echo "<br>";
+echo ("le nombre de jour du mois no ".$mois." est ".$nbrjour);
+
+
 ?>
